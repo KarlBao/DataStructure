@@ -9,12 +9,15 @@
 #include <stdio.h>
 #include "linkedList.h"
 #include "Polynomial.h"
+#include "CursorList.h"
 void testLink();
 void testPolynomial();
+void testCursorList();
 int main(int argc, const char * argv[]) {
     
     //testLink();
-    testPolynomial();
+    //testPolynomial();
+    testCursorList();
     return 0;
 }
 
@@ -64,6 +67,18 @@ void testPolynomial(){
     printPolynomial(sum);
 }
 
+void testCursorList(){
+    initialize();
+    CList CL = CursorAlloc();
+    CInsert(5, CL,CL);
+    CInsert(19, CL,CL);
+    CInsert(7, CL,CL);
+    CPrintList(CL);
+    
+    CDelete(7, CL);
+    CPrintList(CL);
+    
+}
 
 
 
