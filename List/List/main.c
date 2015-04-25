@@ -8,8 +8,17 @@
 
 #include <stdio.h>
 #include "linkedList.h"
+#include "Polynomial.h"
+void testLink();
+void testPolynomial();
 int main(int argc, const char * argv[]) {
     
+    //testLink();
+    testPolynomial();
+    return 0;
+}
+
+void testLink(){
     List L=createList();
     Insert(8,L,L);
     Insert(15, L, L);
@@ -31,8 +40,30 @@ int main(int argc, const char * argv[]) {
         printf("Empty\n");
     else
         printf("Not Empty\n");
-    //Position first=First(L);
-    return 0;
 }
+
+void testPolynomial(){
+    // set P1
+    Polynomial P1 = createPolynomial();
+    insertVar(5, 830, P1);
+    insertVar(17, 517, P1);
+    insertVar(9, 63, P1);
+    insertVar(5, 0, P1);
+    printPolynomial(P1);
+    
+    // set P2
+    Polynomial P2 = createPolynomial();
+    insertVar(63, 417, P2);
+    insertVar(8, 63, P2);
+    insertVar(1, 1, P2);
+    printPolynomial(P2);
+    
+    // get sum
+    Polynomial sum = createPolynomial();
+    sum = addPolynomials(P1, P2);
+    printPolynomial(sum);
+}
+
+
 
 

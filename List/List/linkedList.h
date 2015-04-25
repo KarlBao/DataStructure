@@ -10,7 +10,7 @@
 #define __List__linkedList__
 
 #include <stdio.h>
-
+#include <stdlib.h>
 #define ERR_NULL_POSITION printf("Can not find the node\n");
 struct Node;
 typedef struct Node* PtrToNode;

@@ -7,7 +7,7 @@
 //
 
 #include "linkedList.h"
-#include <stdlib.h>
+
 struct Node{
     int element;
     Position next;
