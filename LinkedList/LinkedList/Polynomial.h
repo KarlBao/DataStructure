@@ -11,9 +11,9 @@
 
 #include <stdio.h>
 #include "linkedList.h"
-typedef struct Node* PtrToNode;
-typedef PtrToNode Polynomial;
-typedef PtrToNode Variable;
+typedef struct PNode* PPtrToNode;
+typedef PPtrToNode Polynomial;
+typedef PPtrToNode Variable;
 #define ERR_NULL_POLY printf("Polynomial does not exist.\n")
 
 //return: new empty Polynomial
@@ -25,6 +25,9 @@ Variable findPrev(Variable, Polynomial);
 //Insert a new variable into polynomial with coefficient A and exponent B
 void insertVar(int coe,int exp,Polynomial P);
 
+//Insert List M into List L, which is ordered into increment
+void insertSequence(List M,List L);
+
 //@return: sum of 2 Polynomials
 Polynomial addPolynomials(Polynomial P1,Polynomial P2);
 
@@ -34,5 +37,9 @@ Polynomial multiPolynomials(Polynomial P1,Polynomial P2);
 //Print the Polynomial
 void printPolynomial(Polynomial P);
 
-
+struct PNode{
+    int coefficient;
+    int exponent;
+    Variable next;
+};
 #endif /* defined(__List__Polynomial__) */

@@ -8,11 +8,7 @@
 
 #include "Polynomial.h"
 
-struct Node{
-    int coefficient;
-    int exponent;
-    Variable next;
-};
+
 
 Polynomial createPolynomial(){
     return malloc(sizeof(struct Node));
@@ -95,6 +91,7 @@ Polynomial addPolynomials(Polynomial P1,Polynomial P2){
     else ERR_NULL_POLY;
     return NULL;
 }
+
 
 void printPolynomial(Polynomial P){
     printf("P = ");

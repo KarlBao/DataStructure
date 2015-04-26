@@ -8,10 +8,7 @@
 
 #include "linkedList.h"
 
-struct Node{
-    int element;
-    Position next;
-};
+
 
 List createList(){
     List header = malloc(sizeof(struct Node));

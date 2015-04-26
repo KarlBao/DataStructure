@@ -38,6 +38,9 @@ Position FindPrevious(int X, List L);
 //Insert X after P
 void Insert(int X,Position P,List L);
 
+//Insert a sequence of list M into L, which is ordered in increment
+void InsertSequence(List L, List M);
+
 //Delete the list
 void DeleteList(List L);
 
@@ -49,4 +52,9 @@ List createList(void);
 
 //Print the list
 void PrintList(List L);
+
+struct Node{
+    int element;
+    Position next;
+};
 #endif /* defined(__List__linkedList__) */

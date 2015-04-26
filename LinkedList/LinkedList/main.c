@@ -10,14 +10,17 @@
 #include "linkedList.h"
 #include "Polynomial.h"
 #include "CursorList.h"
+#include "JosephusProblem.h"
 void testLink();
 void testPolynomial();
 void testCursorList();
+void testTransPotato(int playersNum,int intervalTimes);
 int main(int argc, const char * argv[]) {
     
     //testLink();
     //testPolynomial();
-    testCursorList();
+    //testCursorList();
+    testTransPotato(15000,1);
     return 0;
 }
 
@@ -80,5 +83,8 @@ void testCursorList(){
     
 }
 
-
+void testTransPotato(int playersNum,int intervalTimes){
+    Position winner = transHotPotato(playersNum, intervalTimes);
+    printf("Winner is player %d",winner->element);
+}
 
