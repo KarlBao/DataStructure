@@ -8,10 +8,13 @@
 
 #include <stdio.h>
 #include "StackArray.h"
+#include "Calculator.h"
 #define STACK_SIZE 10
 void testStack();
+void testCalc(String s);
 int main(int argc, const char * argv[]) {
-    testStack();
+    //testStack();
+    testCalc("32+8*(9+12)/3+2^2^3");
     return 0;
 }
 
@@ -34,4 +37,13 @@ void testStack(){
     push(19, S);
     push(-5, S);
     printStack(S);
+}
+
+void testCalc(String s){
+    stack mfStack = getMidFixStack(s);
+    printCalcStack(mfStack);
+    stack pfStack = getPostFixStack(mfStack);
+    printCalcStack(pfStack);
+    int result = calcPostFixExpr(pfStack);
+    printf("Result: %d\n",result);
 }

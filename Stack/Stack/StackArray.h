@@ -41,10 +41,11 @@ int top(stack S);
 int topAndPop(stack S);
 
 void printStack(stack S);
-#endif /* defined(__Stack__StackArray__) */
 
 struct stackRecord{
     int topOfStack;
     int capacity;
     int *array;
 };
+#endif /* defined(__Stack__StackArray__) */
+
