@@ -6,6 +6,7 @@ This repo includes the simple data structures in C. All the exercises are from *
 ADT
 ####Application
 Polynomial
+
 Transfer Hot Potatoes
 ##Stack
 ADT
