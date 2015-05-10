@@ -13,7 +13,7 @@ queue createQueue(int maxSize){
     newQueue->array = malloc(sizeof(int)*maxSize);
     newQueue->capacity=maxSize;
     newQueue->front=0;
-    newQueue->rear=0;
+    newQueue->rear=0; // the next unused position
     return newQueue;
 }
 

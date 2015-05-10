@@ -43,3 +43,11 @@ Position findNextPlayer(Position P,List L){
     }
     return P->next;
 }
+
+Position recursiveFind(int X,List L){
+    Position P = L;
+    if (P->element!=X) {
+        P=recursiveFind(X, P->next);
+    }
+    return P;
+}

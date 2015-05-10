@@ -24,4 +24,6 @@ Position findLoser(List L,int intervalTimes,Position startPos);
 
 //@return: next player's position according to rule of circular list
 Position findNextPlayer(Position P,List L);
+
+Position recursiveFind(int X,List L);
 #endif /* defined(__LinkedList__JosephusProblem__) */

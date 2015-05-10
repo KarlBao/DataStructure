@@ -14,13 +14,15 @@
 void testLink();
 void testPolynomial();
 void testCursorList();
-void testTransPotato(int playersNum,int intervalTimes);
+void testTransPotato(int playersNum,int intervalTimes); // ex 3.10
+void testFindEle();
 int main(int argc, const char * argv[]) {
     
     //testLink();
     //testPolynomial();
     //testCursorList();
-    testTransPotato(15000,1);
+    //testTransPotato(15000,1);
+    testFindEle();
     return 0;
 }
 
@@ -86,5 +88,14 @@ void testCursorList(){
 void testTransPotato(int playersNum,int intervalTimes){
     Position winner = transHotPotato(playersNum, intervalTimes);
     printf("Winner is player %d",winner->element);
+}
+
+void testFindEle(){
+    List L=createList();
+    initPlayers(L, 2000000);
+    Position P;
+    P=Find(1900000, L); // Never crash even do more than 2 million times search
+    //P=recursiveFind(150000, L); // Crash when do more than 170000 times recursion
+    printf("%d",P->element);
 }
 
