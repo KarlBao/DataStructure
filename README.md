@@ -14,3 +14,7 @@ ADT
 Calculator(+ - * / ^)
 ##Queue
 ADT
+
+##Tree
+###AVL Tree
+ADT
