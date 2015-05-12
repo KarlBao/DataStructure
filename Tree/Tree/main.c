@@ -8,10 +8,13 @@
 
 #include <stdio.h>
 #include "AVLTree.h"
+#include "SplayTree.h"
 void testAVLTree();
+void testSplayTree();
 int main(int argc, const char * argv[]) {
     // insert code here...
-    testAVLTree();
+    //testAVLTree();
+    testSplayTree();
     return 0;
 }
 
@@ -34,4 +37,15 @@ void testAVLTree(){
     printf("%d\n",retrieve(findMax(T)));// findMin passed!!!
     printTree(T);
     
+}
+
+void testSplayTree(){
+    SplayTree T;
+    T=insertSNode(5, T);
+    T=insertSNode(2, T);
+    T=insertSNode(82, T);
+    T=insertSNode(15, T);
+    T=insertSNode(9, T);
+    T=deleteSNode(5, T);
+    printTreeInPreorder(T);
 }
