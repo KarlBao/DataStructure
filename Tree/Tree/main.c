@@ -9,12 +9,15 @@
 #include <stdio.h>
 #include "AVLTree.h"
 #include "SplayTree.h"
+#include "IdealBalanceTree.h"
 void testAVLTree();
 void testSplayTree();
+void testIdealTree();
 int main(int argc, const char * argv[]) {
     // insert code here...
-    testAVLTree();
+    //testAVLTree();
     //testSplayTree();
+    testIdealTree();
     return 0;
 }
 
@@ -56,4 +59,9 @@ void testSplayTree(){
     T=insertSNode(9, T);
     T=deleteSNode(5, T);
     printTreeInPreorder(T);
+}
+
+void testIdealTree(){
+    biTree T=createIdealTree(4);
+    printIdealTree(T);
 }
