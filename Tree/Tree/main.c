@@ -13,8 +13,8 @@ void testAVLTree();
 void testSplayTree();
 int main(int argc, const char * argv[]) {
     // insert code here...
-    //testAVLTree();
-    testSplayTree();
+    testAVLTree();
+    //testSplayTree();
     return 0;
 }
 
@@ -25,11 +25,19 @@ void testAVLTree(){
     T=insertNode(15, T);
     T=insertNode(8, T);
     T=insertNode(3, T);
+    //printTree(T);
+    T=deleteNode(15, T);
+    
     T=insertNode(1, T); // left single rotate passed!!!
     T=insertNode(20, T);
     T=insertNode(25, T);// right single rotate passed!!!
     T=insertNode(18, T);// right double rotate passed!!!
     T=insertNode(16, T);
+    T=deleteNode(16, T);
+    T=deleteNode(8, T);
+    T=deleteNode(18, T);// delete passed!!!
+    printTree(T);
+    
     T=insertNode(17, T);// left double rotate passed!!!
     T=insertNode(20, T);// repeated node igored!!!
     T=makeEmpty(T);// make empty passed!!!

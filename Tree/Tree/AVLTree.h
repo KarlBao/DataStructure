@@ -33,6 +33,9 @@ AVLTree insertNode(int x, AVLTree T);
 //@return: the new avl tree after deleting the element X
 AVLTree deleteNode(int x,AVLTree T);
 
+//@return: a new avl tree after replacing the deleted root
+AVLTree adjustTree(int x,AVLTree T);
+
 //@return: the tree after single left rotate
 AVLTree singleRotateLeft(AVLTree T);
 

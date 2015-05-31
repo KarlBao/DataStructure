@@ -79,7 +79,83 @@ AVLTree insertNode(int x,AVLTree T){
     T->height=(getHeight(T->lNode)>getHeight(T->rNode)?getHeight(T->lNode):getHeight(T->rNode))+1;
     return T;
 }
+AVLTree deleteNode(int x, AVLTree T){
+    if(T==NULL)
+        return NULL;
+    else if (T->ele==x) {
+        AVLPos newNode;
+        if(T->rNode!=NULL){
+            newNode = findMin(T->rNode);
+            T->ele = newNode->ele;
+            T->rNode=adjustTree(newNode->ele,T->rNode);
+        }
+        else if(T->lNode!=NULL){
+            newNode = findMax(T->lNode);
+            T->ele = newNode->ele;
+            T->lNode=adjustTree(newNode->ele, T->lNode);
+            
+        }
+        else{
+            T=NULL;
+            free(T);
+            return T;
+        }
+    }
+    else if(T->ele>x)
+        T->lNode=deleteNode(x, T->lNode);
+    else if(T->ele<x)
+        T->rNode=deleteNode(x, T->rNode);
+    if(getHeight(T->rNode)-getHeight(T->lNode)==2){
+        if (T->rNode->rNode!=NULL) {
+            T=singleRotateRight(T);
+        }
+        else
+            T=doubleRotateRight(T);
+    }
+    if(getHeight(T->lNode)-getHeight(T->rNode)==2){
+        if (T->lNode->lNode!=NULL)
+            T=singleRotateLeft(T);
+        else
+            T=doubleRotateLeft(T);
+    }
+    T->height=(getHeight(T->lNode)>getHeight(T->rNode)?getHeight(T->lNode):getHeight(T->rNode))+1;
+    return T;
+}
 
+AVLTree adjustTree(int x, AVLTree T){
+    if (x==T->ele) {
+        if(T->lNode!=NULL)
+            T=T->lNode;
+        else if(T->rNode!=NULL)
+            T=T->rNode;
+        else{
+            T=NULL;
+            free(T);
+            return NULL;
+        }
+    }
+    else if (x>T->ele) {
+        T->rNode=adjustTree(x, T->rNode);
+    }
+    else if (x<T->ele) {
+        T->lNode=adjustTree(x, T->lNode);
+    }
+    if(getHeight(T->rNode)-getHeight(T->lNode)==2){
+        if (T->rNode->rNode!=NULL) {
+            T=singleRotateRight(T);
+        }
+        else
+            T=doubleRotateRight(T);
+    }
+    if(getHeight(T->lNode)-getHeight(T->rNode)==2){
+        if (T->lNode->lNode!=NULL)
+            T=singleRotateLeft(T);
+        else
+            T=doubleRotateLeft(T);
+    }
+    T->height=(getHeight(T->lNode)>getHeight(T->rNode)?getHeight(T->lNode):getHeight(T->rNode))+1;
+    return T;
+}
 int retrieve(AVLPos pos){
     if(pos==NULL)
         return 0;
