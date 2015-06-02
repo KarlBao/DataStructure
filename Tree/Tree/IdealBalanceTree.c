@@ -35,3 +35,12 @@ void printIdealTree(biTree T){
         printIdealTree(T->rNode);
     }
 }
+
+void printTreeInLayer(biTree T){
+    while (T!=NULL) {
+        printf(" %d ",T->ele);
+        
+        printIdealTree(T->lNode);
+        printIdealTree(T->rNode);
+    }
+}

@@ -22,13 +22,12 @@ typedef struct treeNode* biPos;
 
 //@return: an ideal tree with height H
 biTree createIdealTree(int height);
+
 //@return: a sub-tree with specific minimum and maximum value
 biTree generateTree(int min, int max, biTree T);
+
 //print tree in inorder
 void printIdealTree(biTree T);
-struct treeNode{
-    int ele;
-    biPos lNode;
-    biPos rNode;
-};
+
+
 #endif /* defined(__Tree__IdealBalanceTree__) */
