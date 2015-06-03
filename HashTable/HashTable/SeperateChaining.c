@@ -20,7 +20,7 @@ HashTable InitializeTable(int TableSize){
     if(hashTable==NULL)
         printf("Out of memory!\n");
     hashTable->tableSize=TableSize;
-    hashTable->Lists=malloc(sizeof(hashTable->tableSize * sizeof(List)));
+    hashTable->Lists=malloc(hashTable->tableSize * sizeof(List));
     if(hashTable->Lists==NULL)
         printf("Out of memory!\n");
     for (int i=0; i<hashTable->tableSize; i++) {
