@@ -13,6 +13,7 @@ oHashTable oInitialize(int tableSize){
     if(H==NULL)
         printf("Out of memory!\n");
     H->tableSize=tableSize;
+    H->numOfLegitimateCells=0;
     H->cells = malloc(sizeof(struct oHashEntry)*H->tableSize);
     if(H->cells==NULL)
         printf("Out of memort!\n");
@@ -36,8 +37,11 @@ oPosition oFind(const char* keyVal, oHashTable H){
         
         while(curPos>=H->tableSize)
             curPos=curPos-H->tableSize;
-        if(curPos==hashVal)
+        if(curPos==hashVal){
+            H = oReHash(H);
+            curPos=oFind(keyVal, H);
             break;
+        }
     }
     return curPos;
 }
@@ -47,7 +51,11 @@ void oInsert(const char* keyVal, oHashTable H){
     if(H->cells[pos].info!=legitimate){
         H->cells[pos].info=legitimate;
         H->cells[pos].keyVal=keyVal;
+        H->numOfLegitimateCells++;
     }
+    
+    if(H->numOfLegitimateCells > H->tableSize/2)
+        H=oReHash(H);
 }
 
 void oDestroy(oHashTable H){
@@ -55,6 +63,30 @@ void oDestroy(oHashTable H){
     free(H);
 }
 
+oHashTable oReHash(oHashTable H){
+    int tableSize = H->tableSize;
+    int newSize = nextPrime(tableSize*2);
+    oHashTable newHashTable = oInitialize(newSize);
+    for(int i=0;i<tableSize;i++){
+        if(H->cells[i].info==legitimate){
+            oInsert(H->cells[i].keyVal, newHashTable);
+        }
+    }
+    H=newHashTable;
+    return H;
+}
+int nextPrime(int curPrime){
+    int nextPrime=curPrime;
+    while(++nextPrime){
+        for(int i=2;i<=nextPrime/2;i++){
+            if(nextPrime%i==0)
+                break;
+            if(i==nextPrime/2)
+                return nextPrime;
+        }
+    }
+    return nextPrime;
+}
 const char* oRetrieve(oPosition pos, oHashTable H){
     return H->cells[pos].keyVal;
 }

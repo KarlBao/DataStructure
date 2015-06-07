@@ -36,10 +36,17 @@ const char* oRetrieve(oPosition pos, oHashTable H);
 struct oHashTbl{
     int tableSize;
     Cell* cells;
+    int numOfLegitimateCells;
 };
 
 //@return: the hash value
 int oHash(const char* keyVal,int tableSize);
+
+//@return: the rehashed table
+oHashTable oReHash(oHashTable H);
+
+//@return: the next prime number
+int nextPrime(int curPrime);
 
 //print the hash table
 void oPrintHashTable(oHashTable H);

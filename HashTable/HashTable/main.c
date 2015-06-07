@@ -13,8 +13,8 @@ void testSeperateChaining();
 void testOpenAddressingHashing();
 int main(int argc, const char * argv[]) {
     // insert code here...
-    testSeperateChaining();
-    //testOpenAddressingHashing();
+    //testSeperateChaining();
+    testOpenAddressingHashing();
     return 0;
 }
 
@@ -31,7 +31,7 @@ void testSeperateChaining(){
 }
 
 void testOpenAddressingHashing(){
-    oHashTable H=oInitialize(20);
+    oHashTable H=oInitialize(7);
     oInsert("FUCK", H);
     oInsert("YOUR", H);
     oInsert("Grandmother", H);
