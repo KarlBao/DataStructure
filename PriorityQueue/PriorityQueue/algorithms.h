@@ -11,8 +11,13 @@
 
 #include <stdio.h>
 #include "BinaryHeap.h"
-
-//@return: the kth maximum value in arr
-int chooseProblem(int k, int *arr, int arrSize);
+/**
+ *@brief The complexity is O(N*logN);
+ *@return: the kth maximum value in arr
+ *@param k the sequence number of maximum elements to get
+ *@param arr the array to choose from
+ *@param arrSize the size of array
+ */
+ int chooseProblem(int k, int *arr, int arrSize);
 
 #endif /* defined(__PriorityQueue__algorithms__) */
