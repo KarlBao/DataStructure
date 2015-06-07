@@ -28,12 +28,8 @@ int findMin(binaryHeap H){
 
 void insert(int priorityVal, binaryHeap H){
     if(!isFull(H)){
-        int slotPos=H->size+1;
-        /* if slotPos==1, the inserted value will be the the root of heap */
-        for(;slotPos!=1 && priorityVal<=H->elements[slotPos/2];slotPos=slotPos/2){
-            H->elements[slotPos]=H->elements[slotPos/2];
-        }
-        H->elements[slotPos]=priorityVal;
+        int lastPos=H->size+1;
+        percolateUp(lastPos, priorityVal, H);
         H->size++;
     }
 }
@@ -47,13 +43,20 @@ int deleteMin(binaryHeap H){
     percolateDown(1, lastEle, H);
     return min;
 }
-
+int percolateUp(int slotPos, int slotVal, binaryHeap H){
+    /* if slotPos==1, the inserted value will be the the root of heap */
+    for(;slotPos!=1 && slotVal<=H->elements[slotPos/2];slotPos=slotPos/2){
+        H->elements[slotPos]=H->elements[slotPos/2];
+    }
+    H->elements[slotPos]=slotVal;
+    return slotPos;
+}
 int percolateDown(int slotPos, int slotVal, binaryHeap H){
     int childPos=0;
     if(isEmpty(H))
         return -1;
     for(;slotPos*2<=H->size;slotPos=childPos){
-        childPos = (H->size>=slotPos*2+1 && H->elements[slotPos*2]<=H->elements[slotPos*2+1])?slotPos*2:slotPos*2+1;
+        childPos = (H->size>=slotPos*2+1 && H->elements[slotPos*2+1]<=H->elements[slotPos*2])?slotPos*2+1:slotPos*2;
         if(slotVal<=H->elements[childPos])
             break;
         H->elements[slotPos]=H->elements[childPos];
@@ -62,6 +65,18 @@ int percolateDown(int slotPos, int slotVal, binaryHeap H){
     return slotPos;
 }
 
+binaryHeap buildHeap(int *arr, int arrSize, int maxHeapSize){
+    if(arrSize+1>maxHeapSize)
+        maxHeapSize=arrSize+1;
+    binaryHeap H = initializeBHeap(maxHeapSize);
+    H->size=arrSize;
+    /* Note that H->elements[0] should be empty */
+    for(int i=0;i<arrSize;i++)
+        H->elements[i+1]=arr[i];
+    for(int j=H->size/2;j>0;j--)
+        percolateDown(j, H->elements[j], H);
+    return H;
+}
 int isFull(binaryHeap H){
     return H->size==H->capacity;
 }

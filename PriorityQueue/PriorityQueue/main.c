@@ -8,12 +8,14 @@
 
 #include <stdio.h>
 #include "BinaryHeap.h"
-
+#include "algorithms.h"
 void testBinaryHeap();
+void testChooseProblem();
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    testBinaryHeap();
+    //testBinaryHeap();
+    testChooseProblem();
     return 0;
 }
 
@@ -26,5 +28,14 @@ void testBinaryHeap(){
     insert(0, H);
     deleteMin(H);
     deleteMin(H);
-    printf("%d",findMin(H));
+    printf("%d\n",findMin(H));
+    int arr[]={5,1,3,90,2,5,6,3,13,44,0,3};
+    H=buildHeap(arr, sizeof(arr)/sizeof(int), 20);
+    printf("%d\n",findMin(H));
+}
+
+void testChooseProblem(){
+    int arr[]={5,1,3,90,2,5,6,3,13,44,0,3,7,6};
+    int k = chooseProblem(5, arr, sizeof(arr)/sizeof(int));
+    printf("%d\n",k);
 }

@@ -29,6 +29,12 @@ void insert(int priority, binaryHeap H);
 //@return: the new slot position after percolating down
 int percolateDown(int slotPos, int slotVal, binaryHeap H);
 
+//@return: the new slot position after percolating up
+int percolateUp(int slotPos, int slotVal, binaryHeap H);
+
+//@return: the built binary heap
+binaryHeap buildHeap(int *arr, int heapSize, int heapCapacity);
+
 //@return: 1 if the heap is full
 int isFull(binaryHeap H);
 
