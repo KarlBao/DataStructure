@@ -17,7 +17,7 @@
  *@param k the sequence number of maximum elements to get
  *@param arr the array to choose from
  *@param arrSize the size of array
- */
+ **/
  int chooseProblem(int k, int *arr, int arrSize);
 
 #endif /* defined(__PriorityQueue__algorithms__) */
